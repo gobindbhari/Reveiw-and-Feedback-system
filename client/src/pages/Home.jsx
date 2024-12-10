@@ -14,7 +14,8 @@ const Home = () => {
         try {
           console.log("Jelooooooo")
           // const response = await axios.get('http://localhost:5500/post');
-          const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/post`);
+          // const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/post`);
+          const response = await axios.get(`https://reveiw-and-feedback-system.onrender.com/post`);
           console.log(response.data)
           setFoods(response.data);
           setLoading(false);
