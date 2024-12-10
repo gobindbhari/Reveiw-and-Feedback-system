@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import FoodCard from '../components/FoodCard'
 import axios from 'axios'
+import Spinner from '../components/Spinner';
+// import 'dotenv/config'
 
 const Home = () => {
     const [foods, setFoods] = useState([]);
@@ -11,7 +13,8 @@ const Home = () => {
       const fetchFoods = async () => {
         try {
           console.log("Jelooooooo")
-          const response = await axios.get('http://localhost:5500/post');
+          // const response = await axios.get('http://localhost:5500/post');
+          const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/post`);
           console.log(response.data)
           setFoods(response.data);
           setLoading(false);
@@ -26,7 +29,10 @@ const Home = () => {
     }, []);
     console.log(foods)
   
-    if (loading) return <p className="text-center mt-10">Loading...</p>;
+    // if (loading) return <p className="text-center mt-10">Loading...</p>;
+    if (loading) return <div className="text-center mt-10 flex justify-evenly w-[100%] px-[10%]">
+      <Spinner/><Spinner/>
+      </div>;
     if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
   
     return (

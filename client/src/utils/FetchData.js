@@ -1,4 +1,0 @@
-
-const fetchData = async () => {
-    
-}

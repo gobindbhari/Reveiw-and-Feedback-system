@@ -25,7 +25,7 @@ const CommentForm = () => {
     try {        
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    await axios.post('http://localhost:5500/feedback/create',formData)
+    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/feedback/create`,formData)
     alert('Feedback submitted successfully!');
     navigate('/')
     } catch (error) {

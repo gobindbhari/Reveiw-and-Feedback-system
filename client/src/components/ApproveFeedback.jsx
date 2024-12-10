@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import 'dotenv/config'
 
 const ApproveFeedback = () => {
     const [feedback, setFeedback] = useState([]);
@@ -9,7 +10,7 @@ const ApproveFeedback = () => {
     useEffect(() => {
         const fetchFeedback = async () => {
             try {
-                const response = await axios.get('http://localhost:5500/feedback/get');
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/feedback/get`);
                 setFeedback(response.data);
                 setLoading(false);
             } catch (error) {
@@ -23,7 +24,7 @@ const ApproveFeedback = () => {
     // Handle approving or rejecting feedback
     const handleApproval = async (id, approved) => {
         try {
-            const response = await axios.patch(`http://localhost:5500/feedback/approved/${id}`, { approved });
+            const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/feedback/approved/${id}`, { approved });
             setFeedback(prevFeedback =>
                 prevFeedback.map(item =>
                     item._id === id ? { ...item, approved: response.data.feedback.approved } : item
@@ -37,7 +38,7 @@ const ApproveFeedback = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5500/feedback/delete/${id}`);
+            const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/feedback/delete/${id}`);
             // const response = await axios.delete(`http://localhost:5500/feedback/delete/${id}`);
             if (response.status === 200) {
                 console.log('Feedback successfully deleted:', response.data);
