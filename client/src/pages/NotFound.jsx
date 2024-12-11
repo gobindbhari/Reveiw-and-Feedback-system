@@ -15,6 +15,7 @@ const NotFound = () => {
         </div>
     </div>
 </section>
+
   )
 }
 
