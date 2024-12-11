@@ -10,6 +10,7 @@ import {
 import Home from './pages/Home.jsx';
 import CommentForm from './components/CommentForm.jsx';
 import ApproveFeedback from './components/ApproveFeedback.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,9 +28,13 @@ const router = createBrowserRouter([
       {
         path:'/feedback/app',
         element: <ApproveFeedback/>
-      }
+      },
     ]
   },
+  {
+    path:'*',
+    element: <NotFound/>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

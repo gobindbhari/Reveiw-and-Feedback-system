@@ -51,7 +51,13 @@ const ApproveFeedback = () => {
     }
 
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return  <div className="w-screen text-center py-4">
+    <h1 className="mx-auto mt-10 text-lg font-medium"><span className="loading loading-bars loading-xs"></span>
+    </h1>
+  </div>;
+    if (feedback.length == 0) return  <div className="w-screen text-center py-4">
+    <h1 className="mx-auto mt-10 text-lg font-medium">No Data</h1>
+  </div>;
 
     return (
         <div className="container mx-auto p-4">
